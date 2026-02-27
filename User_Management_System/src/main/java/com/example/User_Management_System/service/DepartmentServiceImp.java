@@ -17,6 +17,7 @@ public class DepartmentServiceImp implements DepartmentService {
         this.departmentRepository = departmentRepository;
     }
 
+    /*===================================== MAP ENTITY TO DTO ===============================*/
     private DepartmentDTO entityToDto(Department entity) {
         DepartmentDTO departmentDTO = new DepartmentDTO();
         departmentDTO.setId(entity.getId());
@@ -24,12 +25,14 @@ public class DepartmentServiceImp implements DepartmentService {
         return departmentDTO;
     }
 
+    /*===================================== MAP DTO TO ENTITY ===============================*/
     private Department dtoToEntity(DepartmentDTO departmentDTO) {
         Department department = new Department();
         department.setDepartmentName(departmentDTO.getDepartmentName());
         return department;
     }
 
+    /*===================================== CREATE DEPARTMENT ===============================*/
     @Override
     public DepartmentDTO createDepartment(DepartmentDTO departmentDTO) {
         if(departmentDTO.getDepartmentName()==null || departmentDTO.getDepartmentName().isBlank()){
@@ -42,6 +45,7 @@ public class DepartmentServiceImp implements DepartmentService {
 
     }
 
+    /*===================================== UPDATE DEPARTMENT ===============================*/
     @Override
     public DepartmentDTO updateDepartment(Long id, DepartmentDTO departmentDTO) {
         Department department = departmentRepository.findById(id)
@@ -58,6 +62,7 @@ public class DepartmentServiceImp implements DepartmentService {
 
     }
 
+    /*===================================== DELETE DEPARTMENT ===============================*/
     @Override
     public void deleteDepartment(Long id) {
        Department department = departmentRepository.findById(id)
@@ -65,6 +70,7 @@ public class DepartmentServiceImp implements DepartmentService {
        departmentRepository.delete(department);
     }
 
+    /*===================================== GET DEPARTMENT BY ID ===============================*/
     @Override
     public DepartmentDTO getDepartmentById(Long id) {
         Department department = departmentRepository.findById(id)
@@ -72,6 +78,7 @@ public class DepartmentServiceImp implements DepartmentService {
         return entityToDto(department);
     }
 
+    /*===================================== GET LIST OF DEPARTMENTS ===============================*/
     @Override
     public List<DepartmentDTO> getAllDepartments() {
         List<Department> departments = departmentRepository.findAll();
