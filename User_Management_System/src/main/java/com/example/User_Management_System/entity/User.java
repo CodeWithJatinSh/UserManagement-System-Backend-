@@ -15,6 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -37,11 +38,14 @@ public class User {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "phone_number")
-    private String mobile;        // String, not int
+    @Column(name = "phone_number", unique = true)
+    private String mobile;
 
+    @Email
+    @Column(nullable = false, unique = true)
     private String email;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -53,7 +57,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
    @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "Dept_id")
+   @JoinColumn(name = "dept_id")
    private Department department;
     
 }
