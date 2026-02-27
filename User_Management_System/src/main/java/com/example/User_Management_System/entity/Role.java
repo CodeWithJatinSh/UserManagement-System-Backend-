@@ -1,7 +1,7 @@
 package com.example.User_Management_System.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -25,15 +25,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class role{
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "role_name", nullable = false, unique = true)
+    @Column(name = "Role_Name", nullable = false, unique = true)
     private String roleName;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private Set<user> users = new HashSet<>();
+    private List<User> users = new ArrayList<>();
 }

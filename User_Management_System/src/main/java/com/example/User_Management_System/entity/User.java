@@ -13,6 +13,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class user{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,5 +50,10 @@ public class user{
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
+
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "Dept_id")
+   private Department department;
+    
 }
