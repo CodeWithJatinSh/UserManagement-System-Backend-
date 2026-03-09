@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+   /*===================== FIND BY ROLE NAME (DYNAMIC QUERY) ===========================*/
    List<Role> findByRoleName(@Param("roleName") String roleName);
 }

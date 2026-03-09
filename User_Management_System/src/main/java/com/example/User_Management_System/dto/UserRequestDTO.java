@@ -2,9 +2,6 @@ package com.example.User_Management_System.dto;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import com.example.User_Management_System.entity.Department;
-import com.example.User_Management_System.entity.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
