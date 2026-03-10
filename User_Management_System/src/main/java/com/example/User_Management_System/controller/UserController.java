@@ -44,7 +44,7 @@ public class UserController {
     }
 
     /*============================ UPDATE USER (PUT) ============================================*/
-    @PutMapping(path="/{id}")
+    @PatchMapping(path="/{id}")
     public UserResponseDTO updateUser(@PathVariable Long id, @Valid @RequestBody UserRequestDTO userRequestDTO) {
         return userService.updateUser(id, userRequestDTO);
     }
